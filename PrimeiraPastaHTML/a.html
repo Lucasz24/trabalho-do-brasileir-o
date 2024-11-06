@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            window.onload = function() {
+                $.ajax({
+                    url: "https://api.api-futebol.com.br/v1/campeonatos/10/tabela",
+                    headers: {"Authorization": "Bearer live_92a40b35bf3358e389838bf9c04705"},
+                    type: "GET",
+                    success: function(data) {
+                        console.log(data); // Verificar a estrutura completa da resposta no console
+                        
+                        // Itera sobre cada equipe no array de dados
+                        data.forEach(function(equipe) {
+                            console.log("Posição: " + equipe.posicao);
+                            // Você pode adicionar mais console.logs aqui para visualizar outras propriedades da equipe
+                        });
+                    },
+                    error: function(error) {
+                        alert("Erro ao buscar dados: " + error.toString());
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>
